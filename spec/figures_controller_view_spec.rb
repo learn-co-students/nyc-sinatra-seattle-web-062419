@@ -104,6 +104,8 @@ describe FiguresController do
 
   it "allows you to view form to edit a single figure" do
     @figure = Figure.first
+    @figure.titles << Title.first
+    @figure.save
     get "/figures/#{@figure.id}/edit"
 
     expect(last_response.status).to eq(200)
